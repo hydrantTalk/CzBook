@@ -1,0 +1,6 @@
+*.pdf
+*.txt
+skills/
+skills-lock.json
+.agents/
+.claude/

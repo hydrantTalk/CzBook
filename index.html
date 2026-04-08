@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CZ最恨的人 — 《幣安人生》人物好感排行</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --surface-0: oklch(96% 0.008 55);
+    --surface-1: oklch(93% 0.01 55);
+    --surface-2: oklch(98% 0.005 55);
+    --ink: oklch(18% 0.01 55);
+    --ink-dim: oklch(45% 0.015 55);
+    --ink-faint: oklch(65% 0.01 55);
+    --red: oklch(55% 0.22 25);
+    --red-bg: oklch(92% 0.04 25);
+    --orange: oklch(60% 0.17 55);
+    --orange-bg: oklch(93% 0.04 55);
+    --teal: oklch(50% 0.12 195);
+    --teal-bg: oklch(93% 0.04 195);
+    --gold: oklch(60% 0.15 85);
+    --gold-bg: oklch(94% 0.04 85);
+    --violet: oklch(50% 0.15 300);
+    --violet-bg: oklch(94% 0.03 300);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', 'Noto Sans TC', system-ui, sans-serif;
+    background: var(--surface-0);
+    color: var(--ink);
+    line-height: 1.65;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    padding: clamp(2rem, 5vw, 5rem);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 80%, oklch(90% 0.06 25 / 0.4), transparent),
+      radial-gradient(ellipse 60% 50% at 80% 20%, oklch(92% 0.05 195 / 0.3), transparent);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 900px;
+  }
+
+  .hero-tag {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', 'Noto Sans TC', serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--red);
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--ink-dim);
+    max-width: 550px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .hero-stats {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: clamp(2rem, 5vw, 4rem);
+    padding-top: 2rem;
+    border-top: 1px solid oklch(80% 0.01 55);
+  }
+
+  .hero-stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    margin-top: 0.3rem;
+  }
+
+  /* ===== SECTION DIVIDER ===== */
+  .section-divider {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 4vw, 5rem);
+  }
+
+  .section-divider hr {
+    border: none;
+    height: 1px;
+    background: oklch(80% 0.01 55);
+  }
+
+  /* ===== TIER SECTION ===== */
+  .tier {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 4vw, 5rem);
+  }
+
+  .tier-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .tier-title {
+    font-family: 'Fraunces', 'Noto Sans TC', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ===== PERSON GRID ===== */
+  .person-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .person-grid.duo {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  }
+
+  .person-grid.trio {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  }
+
+  /* ===== FEATURED CARD (Big villain / hero) ===== */
+  .featured {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    min-height: 480px;
+    animation: card-in 600ms var(--ease-out-expo) both;
+  }
+
+  @media (max-width: 768px) {
+    .featured { grid-template-columns: 1fr; min-height: auto; }
+  }
+
+  .featured-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    position: relative;
+  }
+
+  .featured-visual .avatar {
+    width: clamp(100px, 15vw, 160px);
+    height: clamp(100px, 15vw, 160px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    color: white;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .avatar img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+  }
+
+  .featured-visual .rank-badge {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 1.2rem;
+    opacity: 0.4;
+  }
+
+  .featured-visual .big-quote {
+    font-family: 'Fraunces', 'Noto Sans TC', serif;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.4;
+    max-width: 320px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .featured-visual .big-quote::before {
+    content: '"';
+    font-size: 4rem;
+    line-height: 0;
+    vertical-align: -0.3em;
+    opacity: 0.2;
+    margin-right: 0.1em;
+  }
+
+  .featured-body {
+    padding: clamp(2rem, 4vw, 3rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--surface-2);
+  }
+
+  .featured-body .person-name {
+    font-family: 'Fraunces', 'Noto Sans TC', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 0.3rem;
+  }
+
+  .featured-body .person-role {
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    margin-bottom: 1.2rem;
+  }
+
+  .featured-body .excerpt {
+    font-size: 0.95rem;
+    color: var(--ink-dim);
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+
+  .featured-body .ai-take {
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    border-top: 1px solid oklch(85% 0.01 55);
+    padding-top: 1rem;
+    line-height: 1.7;
+  }
+
+  .featured-body .ai-take strong {
+    color: var(--ink-dim);
+    font-weight: 600;
+  }
+
+  /* ===== COMPACT CARD ===== */
+  .card {
+    border-radius: 14px;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    position: relative;
+    overflow: hidden;
+    animation: card-in 600ms var(--ease-out-expo) both;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .card .avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: white;
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .card .person-name {
+    font-family: 'Fraunces', 'Noto Sans TC', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .card .person-role {
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+  }
+
+  .card .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    border-radius: 2rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  .t-red .tag { background: oklch(85% 0.06 25); color: var(--red); }
+  .t-orange .tag { background: oklch(86% 0.06 55); color: var(--orange); }
+  .t-gold .tag { background: oklch(87% 0.06 85); color: var(--gold); }
+  .t-violet .tag { background: oklch(88% 0.05 300); color: var(--violet); }
+  .t-teal .tag { background: oklch(86% 0.05 195); color: var(--teal); }
+
+  .featured-body .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+
+  .card .one-liner {
+    font-size: 0.82rem;
+    color: var(--ink-dim);
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+  }
+
+  .featured-body .one-liner {
+    font-size: 0.9rem;
+    color: var(--ink-dim);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .card .pull-quote {
+    font-family: 'Fraunces', 'Noto Sans TC', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.45;
+    margin-bottom: 0.8rem;
+  }
+
+  .card .excerpt {
+    font-size: 0.88rem;
+    color: var(--ink-dim);
+    line-height: 1.7;
+  }
+
+  .card .ai-take {
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    line-height: 1.65;
+  }
+
+  /* Expandable details */
+  .card-detail {
+    display: none;
+    margin-top: 0.6rem;
+  }
+
+  .card.open .card-detail { display: block; }
+
+  .toggle-btn {
+    background: none;
+    border: none;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.4rem 0;
+    margin-top: 0.5rem;
+    transition: opacity 200ms;
+  }
+
+  .t-red .toggle-btn { color: var(--red); }
+  .t-orange .toggle-btn { color: var(--orange); }
+  .t-gold .toggle-btn { color: var(--gold); }
+  .t-violet .toggle-btn { color: var(--violet); }
+  .t-teal .toggle-btn { color: var(--teal); }
+
+  /* ===== QUOTE STRIP ===== */
+  .quote-strip {
+    padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 4vw, 5rem);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .quote-strip blockquote {
+    font-family: 'Fraunces', 'Noto Sans TC', serif;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    font-style: italic;
+  }
+
+  .quote-strip cite {
+    display: block;
+    margin-top: 1rem;
+    font-style: normal;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+  }
+
+  /* ===== COLOR THEMES ===== */
+  .t-red .featured-visual { background: var(--red-bg); color: var(--red); }
+  .t-red .avatar { background: var(--red); }
+  .t-red .tier-label { color: var(--red); }
+  .t-red .card { background: var(--red-bg); }
+  .t-red .pull-quote { color: var(--red); }
+  .t-red .card .ai-take { border-top: 1px solid oklch(85% 0.04 25); }
+
+  .t-orange .featured-visual { background: var(--orange-bg); color: var(--orange); }
+  .t-orange .avatar { background: var(--orange); }
+  .t-orange .tier-label { color: var(--orange); }
+  .t-orange .card { background: var(--orange-bg); }
+  .t-orange .pull-quote { color: var(--orange); }
+  .t-orange .card .ai-take { border-top: 1px solid oklch(86% 0.04 55); }
+
+  .t-gold .tier-label { color: var(--gold); }
+  .t-gold .card { background: var(--gold-bg); }
+  .t-gold .avatar { background: var(--gold); }
+  .t-gold .pull-quote { color: var(--gold); }
+  .t-gold .card .ai-take { border-top: 1px solid oklch(87% 0.04 85); }
+
+  .t-teal .featured-visual { background: var(--teal-bg); color: var(--teal); }
+  .t-teal .avatar { background: var(--teal); }
+  .t-teal .tier-label { color: var(--teal); }
+  .t-teal .card { background: var(--teal-bg); }
+  .t-teal .pull-quote { color: var(--teal); }
+  .t-teal .card .ai-take { border-top: 1px solid oklch(86% 0.04 195); }
+
+  .t-violet .featured-visual { background: var(--violet-bg); color: var(--violet); }
+  .t-violet .avatar { background: var(--violet); }
+  .t-violet .tier-label { color: var(--violet); }
+  .t-violet .card { background: var(--violet-bg); }
+  .t-violet .pull-quote { color: var(--violet); }
+  .t-violet .card .ai-take { border-top: 1px solid oklch(87% 0.03 300); }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes card-in {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal { opacity: 0; transform: translateY(30px); }
+  .reveal.visible { animation: card-in 600ms var(--ease-out-expo) both; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; }
+    .reveal.visible { animation: none; }
+    .featured, .card { animation: none; }
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 4rem clamp(1.5rem, 4vw, 5rem);
+    text-align: center;
+    color: var(--ink-faint);
+    font-size: 0.82rem;
+    line-height: 1.8;
+  }
+
+  footer p + p { margin-top: 0.4rem; }
+
+  /* ===== NAV BAR ===== */
+  .nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: oklch(96% 0.008 55 / 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid oklch(85% 0.01 55);
+    padding: 0.8rem clamp(1.5rem, 4vw, 5rem);
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nav-bar::-webkit-scrollbar { display: none; }
+
+  .nav-pill {
+    white-space: nowrap;
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    border: 1.5px solid oklch(80% 0.01 55);
+    background: transparent;
+    color: var(--ink-dim);
+    cursor: pointer;
+    transition: all 200ms var(--ease-out-expo);
+    text-decoration: none;
+  }
+
+  .nav-pill:hover {
+    background: var(--ink);
+    color: var(--surface-0);
+    border-color: var(--ink);
+  }
+
+  .nav-pill.active {
+    background: var(--ink);
+    color: var(--surface-0);
+    border-color: var(--ink);
+  }
+
+  /* ===== FAMILY STRIP ===== */
+  .family-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+
+  .family-member {
+    background: var(--teal-bg);
+    border-radius: 14px;
+    padding: 1.5rem;
+    text-align: center;
+    animation: card-in 600ms var(--ease-out-expo) both;
+  }
+
+  .family-member .avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 0.8rem;
+    background: var(--teal);
+    color: white;
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+  }
+
+  .family-member .person-name {
+    font-family: 'Fraunces', 'Noto Sans TC', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .family-member .person-role {
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    margin-bottom: 0.6rem;
+  }
+
+  .family-member .mini-quote {
+    font-size: 0.82rem;
+    color: var(--ink-dim);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  /* ===== RELATIONSHIP CALLOUT ===== */
+  .callout {
+    background: oklch(95% 0.02 55);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 12px 12px 0;
+    padding: 1.5rem 2rem;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--ink-dim);
+    line-height: 1.75;
+  }
+
+  .callout strong {
+    color: var(--ink);
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Claude Opus 4.6 基于《幣安人生》240页全书深度解读</div>
+    <h1>CZ<br><em>最恨的人</em></h1>
+    <p class="hero-sub">从赵长鹏240页亲笔回忆录中，解码他对每个人的真实好恶。谁让他恨得咬牙？谁在他入狱时背后捅刀？谁又在最黑暗时刻拉了他一把？</p>
+  </div>
+  <div class="hero-stats">
+    <div><div class="hero-stat-num" style="color:var(--red)">60+</div><div class="hero-stat-label">书中人物</div></div>
+    <div><div class="hero-stat-num" style="color:var(--teal)">5</div><div class="hero-stat-label">好感层级</div></div>
+    <div><div class="hero-stat-num" style="color:var(--gold)">240</div><div class="hero-stat-label">页深度阅读</div></div>
+  </div>
+</section>
+
+<!-- Nav -->
+<nav class="nav-bar">
+  <a class="nav-pill" href="#hate">极度厌恶</a>
+  <a class="nav-pill" href="#dislike">反感失望</a>
+  <a class="nav-pill" href="#mixed">复杂中性</a>
+  <a class="nav-pill" href="#like">欣赏友好</a>
+  <a class="nav-pill" href="#love">深度信任</a>
+  <a class="nav-pill" href="#family">家人</a>
+</nav>
+
+<!-- ============================================================ -->
+<!-- TIER 1: 极度厌恶 -->
+<!-- ============================================================ -->
+<section class="tier t-red" id="hate">
+  <div class="tier-label">Tier 1</div>
+  <div class="tier-title">极度厌恶</div>
+
+  <!-- SBF: Featured -->
+  <div class="featured reveal">
+    <div class="featured-visual">
+      <div class="rank-badge">#1</div>
+      <div class="avatar"><img src="img/sbf.jpg" alt="SBF"></div>
+      <div class="big-quote">他在不同人面前说不同的话，在我面前装得非常谦逊</div>
+    </div>
+    <div class="featured-body">
+      <div class="person-name">Sam Bankman-Fried</div>
+      <div class="person-role">FTX 创始人 · CZ眼中的行业头号骗子</div>
+      <div class="tags"><span class="tag">欺诈</span><span class="tag">伪装者</span><span class="tag">挖人</span><span class="tag">媒体操控</span><span class="tag">开会打游戏</span></div>
+      <div class="one-liner">高情商伪装者，当面谦逊背后捅刀，CZ自认看走了眼。</div>
+      <div class="excerpt">以3-5倍薪资挖走币安员工，在华盛顿抹黑币安，秘密资助The Block CEO买巴哈马豪宅。FTX崩溃时打电话给CZ说话绕来绕去。CZ自认无法像马斯克那样快速看穿SBF的本质。</div>
+      <div class="ai-take"><strong>Claude 说：</strong>SBF是全书最大的反派。CZ用他开会打游戏的细节，暗示Mt. Gox式灾难重演——管理不了的帝国终将崩塌。"我看不穿他"这句罕见的自我批评，说明SBF对CZ造成了真正的伤害。</div>
+    </div>
+  </div>
+
+  <div style="height:1.5rem"></div>
+
+  <!-- Zhou Wei: Featured -->
+  <div class="featured reveal" style="animation-delay:100ms">
+    <div class="featured-visual">
+      <div class="rank-badge">#2</div>
+      <div class="avatar">周</div>
+      <div class="big-quote">他后来竟回头请我投资他的新交易所——脸皮之厚，令人钦佩</div>
+    </div>
+    <div class="featured-body">
+      <div class="person-name">周偉 Zhou Wei</div>
+      <div class="person-role">币安前CFO · 内部背叛者</div>
+      <div class="tags"><span class="tag">内鬼</span><span class="tag">倒戈作证</span><span class="tag">篡改文件</span><span class="tag">复仇者联盟</span></div>
+      <div class="one-liner">从内部蛀虫到司法部污点证人，教科书级的职场叛徒。</div>
+      <div class="excerpt">秘密修改投资文件、提议自营交易被否决、面试前私下辅导应聘者。被迫辞职后建"币安复仇者联盟"群。最终为换取自身逃税指控撤销，充当美国司法部证人指控CZ。</div>
+      <div class="ai-take"><strong>Claude 说：</strong>CZ用"脸皮厚得令人钦佩"这种冷幽默表达极度鄙夷，比痛骂更有杀伤力。周偉的行为串——利用职位中饱私囊到倒戈作证——是教科书级的职场叛徒。</div>
+    </div>
+  </div>
+
+  <div style="height:1.5rem"></div>
+
+  <div class="person-grid duo">
+    <!-- Xu Mingxing -->
+    <div class="card reveal" style="animation-delay:130ms">
+      <div class="card-header">
+        <div class="avatar"><img src="img/xu-mingxing.jpg" alt="徐明星" onerror="this.remove()">徐</div>
+        <div><div class="person-name">徐明星</div><div class="person-role">OKCoin 创始人 · CZ前老板</div></div>
+      </div>
+      <div class="tags"><span class="tag">前老板</span><span class="tag">海关拦截</span><span class="tag">软禁</span><span class="tag">争夺何一</span><span class="tag">CZ出走导火索</span></div>
+      <div class="one-liner">CZ在OKCoin的前老板——离开后带走了何一创立币安。</div>
+      <div class="pull-quote">被中国海关拦截，后被软禁，据说还举报了李林</div>
+      <button class="toggle-btn" onclick="this.closest('.card').classList.toggle('open')">展开详情 ↓</button>
+      <div class="card-detail">
+        <div class="excerpt">CZ曾在OKCoin工作，也是在那里认识了何一。徐明星未能出席首尔会议因被海关拦截，后被中国警方"软禁"。李林告诉CZ，徐明星据称向警方举报了他导致李林被捕。CZ对此人用"据说""据称"保持刻意距离。</div>
+        <div class="ai-take"><strong>Claude 说：</strong>CZ对前老板的描述极为谨慎，但把他放在"极度厌恶"而非"中性"是有理由的——CZ离开OKCoin后带走何一创立了币安，徐明星则被传举报同行。CZ的克制恰恰说明了这段关系的敏感与复杂，不说比说更有杀伤力。</div>
+      </div>
+    </div>
+
+    <!-- Gensler -->
+    <div class="card reveal" style="animation-delay:150ms">
+      <div class="card-header">
+        <div class="avatar"><img src="img/gary-gensler.jpg" alt="Gary Gensler" onerror="this.remove()">G</div>
+        <div><div class="person-name">Gary Gensler</div><div class="person-role">美国SEC前主席</div></div>
+      </div>
+      <div class="tags"><span class="tag">翻脸</span><span class="tag">政客</span><span class="tag">SEC</span><span class="tag">13项指控</span></div>
+      <div class="one-liner">从饭友到死敌，CZ眼中最虚伪的政客。</div>
+      <div class="pull-quote">曾经一起吃饭、分享未公开证词的朋友，上任后180度大转弯起诉我</div>
+      <button class="toggle-btn" onclick="this.closest('.card').classList.toggle('open')">展开详情 ↓</button>
+      <div class="card-detail">
+        <div class="excerpt">CZ详细记录了两人曾经的私交——东京共进晚餐、MIT录制访谈——然后13项指控劈头盖脸砸来。川普当选后Gensler提前辞职，SEC永久撤案。</div>
+        <div class="ai-take"><strong>Claude 说：</strong>翻脸最狠的人。CZ最恨的不是监管，是"变脸"——从朋友到敌人，比陌生人的攻击更不可原谅。</div>
+      </div>
+    </div>
+
+    <!-- Elizabeth Warren -->
+    <div class="card reveal" style="animation-delay:200ms">
+      <div class="card-header">
+        <div class="avatar"><img src="img/elizabeth-warren.jpg" alt="Elizabeth Warren" onerror="this.remove()">W</div>
+        <div><div class="person-name">Elizabeth Warren</div><div class="person-role">美国参议员</div></div>
+      </div>
+      <div class="tags"><span class="tag">反加密</span><span class="tag">政治表演</span><span class="tag">施压量刑</span></div>
+      <div class="one-liner">加密战争急先锋，量刑前致信司法部施压。</div>
+      <div class="pull-quote">在我量刑前公开致信司法部施压——这是政治表演，不是监管</div>
+      <button class="toggle-btn" onclick="this.closest('.card').classList.toggle('open')">展开详情 ↓</button>
+      <div class="card-detail">
+        <div class="excerpt">CZ认为她的"加密战争"纯粹出于政治目的，利用加密货币作为攻击工具。</div>
+        <div class="ai-take"><strong>Claude 说：</strong>CZ对"用监管当武器"的政客零容忍。Warren在书中被视为与SBF同级别的行业公敌。</div>
+      </div>
+    </div>
+
+    <!-- Zhang Jian -->
+    <div class="card reveal" style="animation-delay:250ms">
+      <div class="card-header">
+        <div class="avatar">张</div>
+        <div><div class="person-name">张健</div><div class="person-role">Fcoin 创始人</div></div>
+      </div>
+      <div class="tags"><span class="tag">庞氏</span><span class="tag">跑路</span><span class="tag">用户损失1.3亿</span></div>
+      <div class="one-liner">自称"比比特币更伟大"，然后卷1亿跑了。</div>
+      <div class="pull-quote">他声称"交易挖矿比比特币更伟大"，然后携1亿美元跑路了</div>
+      <button class="toggle-btn" onclick="this.closest('.card').classList.toggle('open')">展开详情 ↓</button>
+      <div class="card-detail">
+        <div class="excerpt">前火币员工，搞出不可持续的庞氏模式。Fcoin破产造成1.3亿美元用户损失。CZ在2018年公开痛批。</div>
+        <div class="ai-take"><strong>Claude 说：</strong>在CZ价值观中，"保护用户"是第一原则。张健搞庞氏后跑路，触犯最深底线。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Big Quote -->
+<div class="section-divider"><hr></div>
+<div class="quote-strip">
+  <blockquote>「他们吹捧的、他们攻击的，都是他们想象中的那个人。不用太较真。」</blockquote>
+  <cite>—— CZ，谈及外界对他的评价</cite>
+</div>
+<div class="section-divider"><hr></div>
+
+<!-- ============================================================ -->
+<!-- TIER 2: 反感/失望 -->
+<!-- ============================================================ -->
+<section class="tier t-orange" id="dislike">
+  <div class="tier-label">Tier 2</div>
+  <div class="tier-title">反感 / 失望</div>
+
+  <div class="person-grid duo">
+    <div class="card reveal">
+      <div class="card-header">
+        <div class="avatar">S</div>
+        <div><div class="person-name">Stephen Stoneberg</div><div class="person-role">前高盛 · 币安前高管</div></div>
+      </div>
+      <div class="tags"><span class="tag">虚荣</span><span class="tag">倒戈作证</span><span class="tag">落选报复</span></div>
+      <div class="one-liner">追逐聚光灯的人，得不到想要的就反咬。</div>
+      <div class="pull-quote">热衷红毯和聚光灯，没当上CEO就倒戈作证——毫不意外</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:80ms">
+      <div class="card-header">
+        <div class="avatar"><img src="img/do-kwon.jpg" alt="Do Kwon" onerror="this.remove()">D</div>
+        <div><div class="person-name">Do Kwon</div><div class="person-role">Terra/LUNA 创始人</div></div>
+      </div>
+      <div class="tags"><span class="tag">UST崩盘</span><span class="tag">失联</span><span class="tag">2亿律师费</span></div>
+      <div class="one-liner">危机时消失的领导者，CZ最瞧不起的行为。</div>
+      <div class="pull-quote">UST崩盘时完全消失，据说留了2亿美元"律师费"</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:120ms">
+      <div class="card-header">
+        <div class="avatar">M</div>
+        <div><div class="person-name">Mike Alfant</div><div class="person-role">Fusion Systems CEO</div></div>
+      </div>
+      <div class="tags"><span class="tag">没收股权</span><span class="tag">8年白干</span><span class="tag">人生教训</span></div>
+      <div class="one-liner">强迫CZ放弃8年股权，直接影响了币安的股权设计。</div>
+      <div class="pull-quote">我离职时他强迫我放弃八年积累的全部股权——一股不留</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:160ms">
+      <div class="card-header">
+        <div class="avatar">L</div>
+        <div><div class="person-name">Leon</div><div class="person-role">币安亚洲区负责人</div></div>
+      </div>
+      <div class="tags"><span class="tag">失职</span><span class="tag">被开除</span><span class="tag">损害公司</span></div>
+      <div class="one-liner">签了一份烂合同，触发CZ最果断的开除动作。</div>
+      <div class="pull-quote">签了一份严重损害币安利益的收购合同——直接开除</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:200ms">
+      <div class="card-header">
+        <div class="avatar"><img src="img/caroline-ellison.jpg" alt="Caroline Ellison" onerror="this.remove()">C</div>
+        <div><div class="person-name">Caroline Ellison</div><div class="person-role">Alameda Research CEO</div></div>
+      </div>
+      <div class="tags"><span class="tag">FTT崩盘</span><span class="tag">暴露底牌</span><span class="tag">不专业</span></div>
+      <div class="one-liner">管着几十亿资金却犯了交易员最低级的错误。</div>
+      <div class="pull-quote">公开暴露FTT买入价——专业交易员闻风做空，FTT崩盘</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:240ms">
+      <div class="card-header">
+        <div class="avatar">H</div>
+        <div><div class="person-name">Harry Zhou</div><div class="person-role">外部顾问</div></div>
+      </div>
+      <div class="tags"><span class="tag">太极文件</span><span class="tag">泄露</span><span class="tag">定时炸弹</span></div>
+      <div class="one-liner">一份被拒绝的方案泄露后，成了指控CZ的弹药。</div>
+      <div class="pull-quote">他提出的"太极"方案我明确拒绝了，但泄露后却成了指控我的弹药</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<!-- ============================================================ -->
+<!-- TIER 3: 复杂/中性 -->
+<!-- ============================================================ -->
+<section class="tier t-gold" id="mixed">
+  <div class="tier-label">Tier 3</div>
+  <div class="tier-title">复杂 / 中性</div>
+
+  <div class="person-grid trio">
+    <div class="card reveal">
+      <div class="card-header">
+        <div class="avatar"><img src="img/mark-karpeles.jpg" alt="Mark Karpeles" onerror="this.remove()">M</div>
+        <div><div class="person-name">Mark Karpeles</div><div class="person-role">Mt. Gox 创始人</div></div>
+      </div>
+      <div class="tags"><span class="tag">开会打游戏</span><span class="tag">Mt.Gox崩盘</span><span class="tag">侥幸逃脱</span></div>
+      <div class="one-liner">差点上了这条贼船，损失100 BTC算便宜的了。</div>
+      <div class="pull-quote">商务会议打游戏——后来SBF也是这样</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:80ms">
+      <div class="card-header">
+        <div class="avatar">H</div>
+        <div><div class="person-name">Huw</div><div class="person-role">前同事 · 联合创始人</div></div>
+      </div>
+      <div class="tags"><span class="tag">恩怨交织</span><span class="tag">关键沉默</span><span class="tag">隐约和解</span></div>
+      <div class="one-liner">给了机会也给了沉默，CZ无法简单归类的人。</div>
+      <div class="pull-quote">给过我很多机会，但在关键时刻选择了沉默</div>
+      <div class="excerpt">推荐CZ去彭博社，但当Mike Alfant没收CZ股权时一言不发。后隐约和解。</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:160ms">
+      <div class="card-header">
+        <div class="avatar"><img src="img/justin-sun.jpg" alt="孙宇晨" onerror="this.remove()">孙</div>
+        <div><div class="person-name">孙宇晨</div><div class="person-role">Tron 创始人</div></div>
+      </div>
+      <div class="tags"><span class="tag">拜山头</span><span class="tag">求合影</span><span class="tag">收购火币</span></div>
+      <div class="one-liner">CZ不评价就是最大的评价。</div>
+      <div class="pull-quote">来办公室"拜山头"——我第一次听说这个词</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:200ms">
+      <div class="card-header">
+        <div class="avatar"><img src="img/li-lin.jpg" alt="李林" onerror="this.remove()">李</div>
+        <div><div class="person-name">李林</div><div class="person-role">火币创始人</div></div>
+      </div>
+      <div class="tags"><span class="tag">竞争对手</span><span class="tag">被软禁90天</span><span class="tag">同病相怜</span></div>
+      <div class="one-liner">都经历了中国监管铁拳，11年后重逢相视一笑。</div>
+      <div class="pull-quote">被软禁90天后卖掉火币，11年后我们重逢</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:240ms">
+      <div class="card-header">
+        <div class="avatar"><img src="img/neil-shen.jpg" alt="沈南鹏" onerror="this.remove()">沈</div>
+        <div><div class="person-name">沈南鹏</div><div class="person-role">红杉中国创始人</div></div>
+      </div>
+      <div class="tags"><span class="tag">投资未果</span><span class="tag">打过官司</span><span class="tag">阿布扎比和解</span></div>
+      <div class="one-liner">从投资到诉讼到和解——商业纷争终归是商业纷争。</div>
+      <div class="pull-quote">眼光极准——何一加入的消息一出就来投资，但后来我们打了官司</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:280ms">
+      <div class="card-header">
+        <div class="avatar"><img src="img/jamie-dimon.jpg" alt="Jamie Dimon" onerror="this.remove()">J</div>
+        <div><div class="person-name">Jamie Dimon</div><div class="person-role">摩根大通CEO</div></div>
+      </div>
+      <div class="tags"><span class="tag">反BTC急先锋</span><span class="tag">打脸认错</span><span class="tag">马克龙晚宴</span></div>
+      <div class="one-liner">反比特币最凶的银行大佬，2025年终于认怂了。</div>
+      <div class="pull-quote">曾公开反比特币的他，2025年承认自己错了</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:320ms">
+      <div class="card-header">
+        <div class="avatar"><img src="img/eva-kaili.jpg" alt="Eva Kaili" onerror="this.remove()">E</div>
+        <div><div class="person-name">Eva Kaili</div><div class="person-role">欧洲议会前副议长</div></div>
+      </div>
+      <div class="tags"><span class="tag">懂区块链</span><span class="tag">政治迫害</span><span class="tag">最终清白</span></div>
+      <div class="one-liner">理解加密的欧洲政客，CZ认为她被政治迫害。</div>
+      <div class="pull-quote">对区块链理解很深的政客，被逮捕后最终获清白</div>
+    </div>
+  </div>
+</section>
+
+<!-- Big Quote -->
+<div class="section-divider"><hr></div>
+<div class="quote-strip">
+  <blockquote>「我如果不去（认罪），拜登政府要杀死币安，BNB持有者会严重受损，行业可能倒退十年。」</blockquote>
+  <cite>—— CZ，解释为何主动飞往美国</cite>
+</div>
+<div class="section-divider"><hr></div>
+
+<!-- ============================================================ -->
+<!-- TIER 4: 欣赏 / 友好 -->
+<!-- ============================================================ -->
+<section class="tier t-violet" id="like">
+  <div class="tier-label">Tier 4</div>
+  <div class="tier-title">欣赏 / 友好</div>
+
+  <div class="person-grid trio">
+    <div class="card reveal">
+      <div class="card-header">
+        <div class="avatar"><img src="img/bobby-lee.jpg" alt="Bobby Lee" onerror="this.remove()">B</div>
+        <div><div class="person-name">Bobby Lee 李启元</div><div class="person-role">BTC China CEO</div></div>
+      </div>
+      <div class="tags"><span class="tag">引路人</span><span class="tag">改变命运的一句话</span></div>
+      <div class="one-liner">一句"买10%比特币"改写了CZ人生轨迹。</div>
+      <div class="pull-quote">他一句话改变了我的命运："把10%资产买比特币"</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:60ms">
+      <div class="card-header">
+        <div class="avatar">J</div>
+        <div><div class="person-name">Joseph Muscat</div><div class="person-role">马耳他总理</div></div>
+      </div>
+      <div class="tags"><span class="tag">雪中送炭</span><span class="tag">一条推文救市</span></div>
+      <div class="one-liner">全世界都在赶币安走，他主动发推欢迎。</div>
+      <div class="pull-quote">日本警告我们后市场恐慌，他自发发推欢迎币安来马耳他——雪中送炭</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:120ms">
+      <div class="card-header">
+        <div class="avatar"><img src="img/nayib-bukele.jpg" alt="Nayib Bukele" onerror="this.remove()">N</div>
+        <div><div class="person-name">Nayib Bukele</div><div class="person-role">萨尔瓦多总统</div></div>
+      </div>
+      <div class="tags"><span class="tag">一见如故</span><span class="tag">加密老手</span><span class="tag">比特币法币化</span></div>
+      <div class="one-liner">CZ心中理想的国家领导人——年轻、果断、拥抱科技。</div>
+      <div class="pull-quote">第一次见面像见到老朋友——真正的加密老手</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:180ms">
+      <div class="card-header">
+        <div class="avatar">V</div>
+        <div><div class="person-name">Viktor</div><div class="person-role">Trust Wallet 创始人</div></div>
+      </div>
+      <div class="tags"><span class="tag">技术大牛</span><span class="tag">低调谦逊</span><span class="tag">收购成功</span></div>
+      <div class="one-liner">技术说话，产品说话——CZ最欣赏的创业者类型。</div>
+      <div class="pull-quote">技术过硬、为人低调、产品说话——CZ最欣赏的创业者类型</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:240ms">
+      <div class="card-header">
+        <div class="avatar"><img src="img/omar-al-olama.jpg" alt="Omar Al Olama" onerror="this.remove()">O</div>
+        <div><div class="person-name">Omar Al Olama</div><div class="person-role">阿联酋AI部长</div></div>
+      </div>
+      <div class="tags"><span class="tag">高效</span><span class="tag">一天黄金签证</span><span class="tag">新一代官员</span></div>
+      <div class="one-liner">周末也办事，一天搞定黄金签证。政府效率天花板。</div>
+      <div class="pull-quote">周末也安排见面，一天搞定黄金签证——新一代官员的典范</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:300ms">
+      <div class="card-header">
+        <div class="avatar"><img src="img/eduardo-paes.jpg" alt="Eduardo Paes" onerror="this.remove()">E</div>
+        <div><div class="person-name">Eduardo Paes</div><div class="person-role">里约热内卢市长</div></div>
+      </div>
+      <div class="tags"><span class="tag">懂加密梗</span><span class="tag">城市私钥</span><span class="tag">直升机游览</span></div>
+      <div class="one-liner">送一把钥匙说是"城市的私钥"——最懂加密的市长。</div>
+      <div class="pull-quote">送了我一把实体钥匙说这是"城市的私钥"——太懂加密文化了</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:360ms">
+      <div class="card-header">
+        <div class="avatar">R</div>
+        <div><div class="person-name">Rich Teo</div><div class="person-role">Paxos 联合创始人</div></div>
+      </div>
+      <div class="tags"><span class="tag">14年老友</span><span class="tag">富而不骄</span><span class="tag">BUSD合作</span></div>
+      <div class="one-liner">有钱却不摆架子，还主动预警SBF的动作。</div>
+      <div class="pull-quote">早就发财了却跟不富裕的朋友一样自在——富而不骄</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:420ms">
+      <div class="card-header">
+        <div class="avatar">二</div>
+        <div><div class="person-name">郭宏才 二宝</div><div class="person-role">加密圈OG</div></div>
+      </div>
+      <div class="tags"><span class="tag">草根英雄</span><span class="tag">500人火锅</span><span class="tag">全捐慈善</span></div>
+      <div class="one-liner">很多人以貌取人看不起他，但他比谁都慷慨。</div>
+      <div class="pull-quote">500人火锅宴花2个BTC，顾问代币全捐慈善——真性情</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:480ms">
+      <div class="card-header">
+        <div class="avatar"><img src="img/donald-trump.jpg" alt="Donald Trump" onerror="this.remove()">T</div>
+        <div><div class="person-name">Donald Trump</div><div class="person-role">美国总统</div></div>
+      </div>
+      <div class="tags"><span class="tag">总统赦免</span><span class="tag">全面无条件</span><span class="tag">恢复名誉</span></div>
+      <div class="one-liner">一纸赦免书，比自由更重要的是清白。</div>
+      <div class="pull-quote">全面无条件赦免——恢复名誉比自由更重要</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<!-- ============================================================ -->
+<!-- TIER 5: 深度信任与敬爱 -->
+<!-- ============================================================ -->
+<section class="tier t-teal" id="love">
+  <div class="tier-label">Tier 5</div>
+  <div class="tier-title">深度信任与敬爱</div>
+
+  <!-- He Yi: Featured -->
+  <div class="featured reveal">
+    <div class="featured-visual">
+      <div class="rank-badge">TOP</div>
+      <div class="avatar"><img src="img/he-yi.jpg" alt="何一"></div>
+      <div class="big-quote">何其有幸，与她同行</div>
+    </div>
+    <div class="featured-body">
+      <div class="person-name">何一 He Yi</div>
+      <div class="person-role">币安联合创始人 · 全书着墨最多的人</div>
+      <div class="tags"><span class="tag">命名币安</span><span class="tag">唯一不要代币的顾问</span><span class="tag">逃离中国</span><span class="tag">关系成谜</span><span class="tag">请愿书暗示生子</span><span class="tag">CZ仅认工作伙伴</span></div>
+      <div class="one-liner">全书最大谜团：何一在请愿书中暗示为CZ生过孩子，但CZ全书仅承认她是工作伙伴。</div>
+      <div class="excerpt">为币安命名"幣安"(币+安)，是唯一看白皮书时给实质反馈而不索要代币的人。BNB上线首日暴跌40%时毅然提交辞呈加入，逃离中国时冷静拆掉所有人SIM卡，留下受伤的母亲独自飞往日本。她为此书作序，以"外面没有别人"开篇。</div>
+      <div class="ai-take"><strong>Claude 说：</strong>何一是全书最复杂也最耐人寻味的人物。书中CZ始终将两人定位为职业伙伴，从未提及恋爱或婚姻。然而书外的信息却暗流涌动——2023年CZ赴美认罪期间，何一向法官提交了一封请愿信，信中以"伴侣"身份出现，并侧面表示自己为CZ生过孩子，恳请法官从轻量刑。这与书中的"纯职业关系"叙事形成巨大反差。CZ全书仅承认自己有两个孩子（约2003年东京时代出生），而何一育有三个孩子——CZ对这些孩子只字未提。这种"书内留白、书外暗示"的操作，让两人的真实关系成为全书最大的悬念。是刻意保护隐私，还是另有隐情？读者自行判断。</div>
+    </div>
+  </div>
+
+  <div class="callout reveal">
+    <strong>书内 vs 书外——两个版本的CZ感情史：</strong><br><br>
+    <strong>书内版本：</strong>CZ在北京OKCoin工作期间与前妻分居，几年后离婚，一笔带过。全书仅承认两个孩子（约2003年东京时代出生）。与何一的关系始终描述为职业合作伙伴，无任何私人情感描写。<br><br>
+    <strong>书外版本：</strong>2023年CZ认罪量刑期间，何一向美国法院提交请愿信，以"伴侣"身份出现，信中侧面表示自己为CZ生过孩子，恳请法官从轻量刑。何一育有三个孩子。<br><br>
+    <strong>矛盾点：</strong>CZ全书仅承认两个孩子，何一的三个孩子只字未提。书中何一是"工作伙伴"，请愿书中何一是"伴侣和孩子的母亲"。两个叙事之间的裂缝，是全书最大的留白。
+  </div>
+
+  <div style="height:1.5rem"></div>
+
+  <!-- Vitalik: Featured -->
+  <div class="featured reveal" style="animation-delay:100ms">
+    <div class="featured-visual">
+      <div class="rank-badge">TOP</div>
+      <div class="avatar"><img src="img/vitalik-buterin.jpg" alt="Vitalik"></div>
+      <div class="big-quote">他是真正的天才，社会需要保护这样的人</div>
+    </div>
+    <div class="featured-body">
+      <div class="person-name">Vitalik Buterin V神</div>
+      <div class="person-role">以太坊创始人 · CZ的天才挚友</div>
+      <div class="tags"><span class="tag">19岁相识</span><span class="tag">睡上下铺</span><span class="tag">天才</span><span class="tag">需要保护</span><span class="tag">零知识证明</span></div>
+      <div class="one-liner">即使说"交易所该下地狱"，CZ也只是笑着理解他的理想主义。</div>
+      <div class="excerpt">2013年相识时才19岁，2015年住CZ东京家里和八岁儿子睡上下铺。即使Vitalik说"中心化交易所该下地狱"，CZ也只是笑着理解他的理想主义。FTX崩溃后Vitalik主动建议用零知识证明做储备证明。</div>
+      <div class="ai-take"><strong>Claude 说：</strong>"社会需要保护这样的人"——这句话揭示了CZ内心的柔软。对天才的爱护超越了商业利害关系，即使被"骂"也选择理解。</div>
+    </div>
+  </div>
+
+  <div style="height:1.5rem"></div>
+
+  <div class="person-grid duo">
+    <div class="card reveal">
+      <div class="card-header">
+        <div class="avatar"><img src="img/ray-dalio.jpg" alt="Ray Dalio" onerror="this.remove()">R</div>
+        <div><div class="person-name">Ray Dalio</div><div class="person-role">桥水基金创始人</div></div>
+      </div>
+      <div class="tags"><span class="tag">人生导师</span><span class="tag">带伤参会</span><span class="tag">CZ原则灵感</span></div>
+      <div class="one-liner">谦逊、硬核、博学——CZ在传统金融最崇拜的人。</div>
+      <div class="pull-quote">脚踝受伤还坚持来参加币安活动——硬核到令我敬畏</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:80ms">
+      <div class="card-header">
+        <div class="avatar"><img src="img/eric-schmidt.jpg" alt="Eric Schmidt" onerror="this.remove()">E</div>
+        <div><div class="person-name">Eric Schmidt</div><div class="person-role">前Google CEO</div></div>
+      </div>
+      <div class="tags"><span class="tag">精准导师</span><span class="tag">DNROOC</span><span class="tag">一眼看穿问题</span></div>
+      <div class="one-liner">比CZ聪明且愿意倾囊相授——极稀有的导师。</div>
+      <div class="pull-quote">DNROOC——永远别把钱花光。他能在我没讲完时就看出问题</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:120ms">
+      <div class="card-header">
+        <div class="avatar"><img src="img/elon-musk.jpg" alt="Elon Musk" onerror="this.remove()">E</div>
+        <div><div class="person-name">Elon Musk</div><div class="person-role">Tesla / SpaceX / X</div></div>
+      </div>
+      <div class="tags"><span class="tag">5亿投资Twitter</span><span class="tag">言论自由</span><span class="tag">看穿SBF</span></div>
+      <div class="one-liner">为言论自由砸5亿，还一眼看穿了SBF。</div>
+      <div class="pull-quote">投5亿美元支持他收购Twitter——为了言论自由</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:160ms">
+      <div class="card-header">
+        <div class="avatar">M</div>
+        <div><div class="person-name">Michael Santos</div><div class="person-role">狱中导师 · 服刑26年</div></div>
+      </div>
+      <div class="tags"><span class="tag">上帝的礼物</span><span class="tag">狱中出书6本</span><span class="tag">亲自接CZ出狱</span></div>
+      <div class="one-liner">全书最高评价："上帝的礼物"。在狱中活出了自由人的一生。</div>
+      <div class="pull-quote">上帝的礼物——因大麻被判45年，在狱中结婚出书拿学位</div>
+    </div>
+  </div>
+
+  <div style="height:1.5rem"></div>
+
+  <div class="person-grid trio">
+    <div class="card reveal">
+      <div class="card-header">
+        <div class="avatar">T</div>
+        <div><div class="person-name">Ted</div><div class="person-role">一生挚友 · 币安早期</div></div>
+      </div>
+      <div class="tags"><span class="tag">高中至今</span><span class="tag">看博客就加入</span><span class="tag">绝对信任</span></div>
+      <div class="one-liner">看了ICO博客直接辞职加入，不需要尽职调查。</div>
+      <div class="pull-quote">看了我的ICO博客就直接加入——跨越数十年的信任</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:60ms">
+      <div class="card-header">
+        <div class="avatar">S</div>
+        <div><div class="person-name">Sean</div><div class="person-role">长期挚友 · 早期投资人</div></div>
+      </div>
+      <div class="tags"><span class="tag">患难兄弟</span><span class="tag">多次失败</span><span class="tag">最早投资人</span></div>
+      <div class="one-liner">反复创业失败中锻造的兄弟情，纯粹基于信任下注。</div>
+      <div class="pull-quote">在多次创业失败中锻造的兄弟情</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:120ms">
+      <div class="card-header">
+        <div class="avatar">R</div>
+        <div><div class="person-name">Roger</div><div class="person-role">币安创始CTO</div></div>
+      </div>
+      <div class="tags"><span class="tag">技术灵魂</span><span class="tag">超预期交付</span><span class="tag">健康代价</span></div>
+      <div class="one-liner">用眼睛的健康换来了币安的技术基础，CZ又感激又心疼。</div>
+      <div class="pull-quote">总能比预期更快更好交付——但我担心他的眼睛</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:180ms">
+      <div class="card-header">
+        <div class="avatar">海</div>
+        <div><div class="person-name">Heina 海纳</div><div class="person-role">20年老搭档</div></div>
+      </div>
+      <div class="tags"><span class="tag">四川农村</span><span class="tag">自学成才</span><span class="tag">热钱包笔记本被砸</span></div>
+      <div class="one-liner">从四川农村到撑起全球最大交易所后台——无名英雄。</div>
+      <div class="pull-quote">她老公受不了她没日没夜工作，怒砸了装币安热钱包的笔记本</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:240ms">
+      <div class="card-header">
+        <div class="avatar">王</div>
+        <div><div class="person-name">不丹国王</div><div class="person-role">吉格梅·旺楚克陛下</div></div>
+      </div>
+      <div class="tags"><span class="tag">治愈之旅</span><span class="tag">谦逊让座</span><span class="tag">亲自导览</span></div>
+      <div class="one-liner">在监管风暴后给CZ精神庇护——"治愈"二字极为罕见。</div>
+      <div class="pull-quote">那次访问治愈了我——他让出最好的座位给我坐</div>
+    </div>
+
+    <div class="card reveal" style="animation-delay:300ms">
+      <div class="card-header">
+        <div class="avatar">C</div>
+        <div><div class="person-name">Conrad</div><div class="person-role">高中排球教练</div></div>
+      </div>
+      <div class="tags"><span class="tag">人生导师</span><span class="tag">永不中断势头</span><span class="tag">排球哲学</span></div>
+      <div class="one-liner">一句"永远不要中断势头"贯穿CZ整个职业生涯。</div>
+      <div class="pull-quote">永远不要中断你的势头——这句话贯穿了我整个职业生涯</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<!-- Big Quote -->
+<div class="quote-strip">
+  <blockquote>「那个自己淋着雨的人，还想给其他人撑伞。」</blockquote>
+  <cite>—— 何一，谈及CZ在美国服刑期间创立免费教育项目 Giggle Academy</cite>
+</div>
+
+<div class="section-divider"><hr></div>
+
+<!-- ============================================================ -->
+<!-- FAMILY -->
+<!-- ============================================================ -->
+<section class="tier t-teal" id="family">
+  <div class="tier-label">至亲</div>
+  <div class="tier-title">血脉之根</div>
+
+  <div class="family-strip">
+    <div class="family-member reveal">
+      <div class="avatar">父</div>
+      <div class="person-name">父亲</div>
+      <div class="person-role">物理学者 · 2021年白血病离世</div>
+      <div class="mini-quote">花七个月工资给13岁的我买电脑。他走的时候，我在公司会议上哭了。</div>
+    </div>
+    <div class="family-member reveal" style="animation-delay:80ms">
+      <div class="avatar">母</div>
+      <div class="person-name">母亲</div>
+      <div class="person-role">数学教师 · 82岁</div>
+      <div class="mini-quote">在温哥华当裁缝赚最低工资，把最好的年华给了我们。</div>
+    </div>
+    <div class="family-member reveal" style="animation-delay:160ms">
+      <div class="avatar">姐</div>
+      <div class="person-name">姐姐</div>
+      <div class="person-role">一生的后盾</div>
+      <div class="mini-quote">14岁做饭，15岁打工，大学借我钱。开车送我去监狱，出狱时在门口等。</div>
+    </div>
+    <div class="family-member reveal" style="animation-delay:240ms">
+      <div class="avatar">W</div>
+      <div class="person-name">Winnie</div>
+      <div class="person-role">前妻 · 东京中餐厅相识</div>
+      <div class="mini-quote">书中仅一笔带过分居与离婚，几乎不做展开。</div>
+    </div>
+    <div class="family-member reveal" style="animation-delay:320ms">
+      <div class="avatar">子</div>
+      <div class="person-name">孩子们</div>
+      <div class="person-role">约2003年出生 · 书中仅承认两个</div>
+      <div class="mini-quote">他们的出生让我戒掉了反恐精英。父亲终究没能亲眼见到他们。注：CZ全书仅承认有两个孩子，未提及更多。</div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>本站基于 Claude Opus 4.6 对赵长鹏回忆录《幣安人生》全书240页的深度阅读与分析</p>
+  <p>好感度排序为AI根据书中叙述语气、篇幅及情感倾向综合判断，仅代表解读，不代表客观评价</p>
+  <p style="margin-top:1rem; opacity:0.5">2026 · CZ最恨的人 · 仅供娱乐</p>
+</footer>
+
+<script>
+// Intersection Observer for reveal animations
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Nav pill active state on scroll
+const sections = document.querySelectorAll('.tier[id]');
+const pills = document.querySelectorAll('.nav-pill');
+
+const navObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      pills.forEach(p => p.classList.remove('active'));
+      const pill = document.querySelector(`.nav-pill[href="#${e.target.id}"]`);
+      if (pill) pill.classList.add('active');
+    }
+  });
+}, { threshold: 0.2 });
+
+sections.forEach(s => navObs.observe(s));
+</script>
+
+</body>
+</html>
