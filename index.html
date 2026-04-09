@@ -628,56 +628,63 @@
     color: var(--ink);
   }
 
-  /* ===== TOP BAR ===== */
-  .top-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    display: flex;
-    justify-content: center;
+  /* ===== AUTHOR CHIP ===== */
+  .author-chip {
+    display: inline-flex;
     align-items: center;
-    padding: 0.6rem 1.5rem;
-    background: oklch(18% 0.01 55 / 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    color: oklch(90% 0.01 55);
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-  }
-  .top-bar a {
-    color: oklch(75% 0.12 195);
+    gap: 0.5rem;
+    padding: 0.3rem 0.85rem 0.3rem 0.3rem;
+    background: oklch(18% 0.01 55 / 0.08);
+    border: 1px solid oklch(18% 0.01 55 / 0.1);
+    border-radius: 100px;
     text-decoration: none;
-    margin-left: 0.4em;
-    font-weight: 600;
-    transition: color 0.2s;
+    color: var(--ink-dim);
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.25s var(--ease-out-expo);
+    cursor: pointer;
   }
-  .top-bar a:hover {
-    color: oklch(85% 0.12 195);
+  .author-chip:hover {
+    background: oklch(18% 0.01 55 / 0.14);
+    border-color: oklch(18% 0.01 55 / 0.18);
+    color: var(--ink);
+    transform: translateY(-1px);
   }
-  .top-bar svg {
-    width: 1em;
-    height: 1em;
-    vertical-align: -0.1em;
-    margin-right: 0.3em;
+  .author-chip img {
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .author-chip svg {
+    width: 0.85em;
+    height: 0.85em;
     fill: currentColor;
+    opacity: 0.5;
+    flex-shrink: 0;
   }
-  .hero { padding-top: calc(clamp(2rem, 5vw, 5rem) + 2.5rem); }
+  .hero-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
 </style>
 </head>
 <body>
 
-<!-- Top Bar -->
-<div class="top-bar">
-  Author: <a href="https://x.com/banbendaan" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@banbendaan</a>
-</div>
-
 <!-- Hero -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-tag">Claude Opus 4.6 基于《幣安人生》240页全书的人物关系蒸馏</div>
+    <div class="hero-top">
+      <div class="hero-tag">Claude Opus 4.6 基于《幣安人生》240页全书的人物关系蒸馏</div>
+      <a class="author-chip" href="https://x.com/banbendaan" target="_blank" rel="noopener">
+        <img src="img/author.jpg" alt="坂本答案">
+        @banbendaan
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+    </div>
     <h1>CZ<br><em>最恨的人</em></h1>
     <p class="hero-sub">从赵长鹏240页亲笔回忆录中，解码他对每个人的真实好恶。谁让他恨得咬牙？谁在他入狱时背后捅刀？谁又在最黑暗时刻拉了他一把？</p>
   </div>
